@@ -1,0 +1,202 @@
+# -----------------------------------------------------------------------------------------#
+# In dieser Datei werden die Ladekarten, Ladestationsbetreiber, Preise und Infos gepflegt! #
+# In dieser Datei werden auch die Pfade zu den jeweiligen Logos gepflegt.                  #
+#                                                                                          #
+# Die Korrekte Einrückung (2 Leerzeichen pro Ebene) ist unbedingt zu beachten!             #
+# Alle Texte müssen entweder in "Anführungszeichen" gesetzt oder mit "|" begonnen werden!  #
+# -----------------------------------------------------------------------------------------#
+# Zuletzt aktualisiert: 
+
+
+# Seitenlogo und Überschriften:
+meta:
+  page_title: "LADEGAMS.eu"
+  page_logo: "./images/ladegams.svg"
+  intro_text: "Meine individuellen Ladekarten"
+  info_page_text: |
+     Dieses Tool hilft dir dabei, an öffentlichen Ladestationen schnell die passende Ladekarte zu wählen.
+     AC bedeutet Langsam-Lader (Typ 2), DC bedeutet Schnelllader (CCS, HPC).
+     Die angezeigten Empfehlungen und Infos werden vom Fuhrparkmanagement gepflegt und umfassen nur die im Unternehmen genutzten Ladekarten. Wenn du einen Ladestationsanbieter vermisst, wende dich an dein Fuhrparkmanagement.
+     Diese Seite dient ausschließlich zur unternehmensinternen Information und stellt keine verbindliche Tarifauskunft dar. 
+  info_page_datenschutz_url: ""
+  info_page_impressum_url: ""
+
+
+# Ladekarten:
+# Jede Karte muss einen Kurznamen z.B. "&bmw" haben!
+cards:
+  bmw: &bmw
+    name: "BMW Charging"
+    logo: "./images/bmw.svg"
+
+  wienenergie: &wienenergie
+    name: "Wien Energie"
+    logo: "./images/wienEnergie.svg"
+
+  salzburgag: &salzburgag
+    name: "Salzburg AG"
+    logo: "./images/salzburgAg.svg"
+  
+  adhoc: &adhoc
+    name: "Ad-hoc"
+    logo: "./images/adhoc.svg"
+
+  # muster: &muster
+  #   name: "Muster-Ladekarte"
+  #   logo: "./images/muster.svg"
+
+
+# Ladestations-Betreiber:
+
+# Pro Betreiber können zwei Karten hinterlegt werden.
+# Der Name muss dabei dem oben vergebenen Kurznamen entsprechen, jedoch mit "*" statt "&".
+# "preferred" ist die empfohlene Karte und "fallback" ist die Alternative.
+# Optional können jeweils die Zusatzfelder (_price, _info) befüllt werden.
+# "operator-info" ist ein Infotext zu diesem Ladestationsbetreiber
+# Die Auflistung in der App erfolgt in derselben Reihenfolge wie hier.
+
+operators:
+  - id: ionity
+    name: "IONITY"
+    logo: "./images/ionity.svg"
+    preferred_card: *bmw
+    preferred_card_price: "0,45 €/kWh"
+    preferred_card_info: ""
+    fallback_card: *wienenergie
+    fallback_card_price: ""
+    fallback_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+    operator_info: ""
+
+  - id: smatrics_dc
+    name: "Smatrics (DC)"
+    logo: "./images/smatrics.svg"
+    preferred_card: *wienenergie
+    preferred_card_price: "42 €/h"
+    preferred_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+    fallback_card: *bmw
+    fallback_card_price: "0,66 €/kWh"
+    fallback_card_info: "⏱️ Blockiergebühr nach 1 h"
+    operator_info: "Hier ist jedes mögliche Feld befüllt"
+
+  - id: smatrics_ac
+    name: "Smatrics (AC)"
+    logo: "./images/smatrics.svg"
+    preferred_card: *bmw
+    preferred_card_price: "0,59 €/kWh"
+    preferred_card_info: "⏱️ Blockiergebühr nach 4 h"
+    fallback_card: *adhoc
+    fallback_card_price: ""
+    fallback_card_info: "Kreditkarte oder QR-Code"
+
+  - id: salzburgag
+    name: "Salzburg AG"
+    logo: "./images/salzburgAg.svg"
+    preferred_card: *salzburgag
+    preferred_card_price: |
+      0,36 €/kWh AC
+      0,42 €/kWh DC
+    preferred_card_info: "⏱️ Blockiergebühr nach 1 h (DC) bzw. 4 h (AC)"
+    fallback_card: *adhoc
+    fallback_card_price: ""
+    fallback_card_info: "Kreditkarte oder QR-Code"
+
+  - id: wienenergie
+    name: "Wien Energie"
+    logo: "./images/wienEnergie.svg"
+    preferred_card: *wienenergie
+    preferred_card_price: ""
+    preferred_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+    fallback_card: *bmw
+    fallback_card_price: ""
+    fallback_card_info: "⚠️ Teuer! Nur im Notfall nutzen!"
+
+  - id: evn
+    name: "EVN"
+    logo: "./images/evn.svg"
+    preferred_card: *bmw
+    preferred_card_price: |
+      0,49 €/kWh DC
+      0,66 €/kWh AC
+    preferred_card_info: "⏱️ Blockiergebühr nach 30 min (DC) bzw. 2 h (AC)"
+    fallback_card: *wienenergie
+    fallback_card_price: ""
+    fallback_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+
+  - id: mer
+    name: "Mer"
+    logo: "./images/mer.png"
+    preferred_card: *bmw
+    preferred_card_price: "0,49 €/kWh"
+    preferred_card_info: "⏱️ Blockiergebühr nach 30 min"
+    fallback_card: *wienenergie
+    fallback_card_price: ""
+    fallback_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+
+  - id: omv
+    name: "OMV"
+    logo: "./images/omv.svg"
+    preferred_card: *wienenergie
+    preferred_card_price: ""
+    preferred_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+    fallback_card: *bmw
+    fallback_card_price: "0,68 €/kWh"
+    fallback_card_info: "⏱️ Blockiergebühr nach 2 h"
+
+  - id: shell
+    name: "Shell"
+    logo: "./images/shell.svg"
+    preferred_card: *wienenergie
+    preferred_card_price: ""
+    preferred_card_info: |
+      ⚠️ Abrechnung nach Zeit!
+      Auto nach Ladung abstecken!
+    fallback_card: *bmw
+    fallback_card_price: "0,71 €/kWh"
+    fallback_card_info: ""
+
+  - id: kelag
+    name: "Kelag"
+    logo: "./images/kelag.svg"
+    preferred_card: *bmw
+    preferred_card_price: "0,64 €/kWh"
+    preferred_card_info: "⏱️ Blockiergebühr nach 1 h"
+    fallback_card: *adhoc
+    fallback_card_price: ""
+    fallback_card_info: "Kreditkarte oder QR-Code"
+    operator_info: "Häufig bei Hofer-Filialen zu finden"
+
+  - id: andere
+    name: "Andere Betreiber"
+    logo: "./images/plug.svg"
+    preferred_card: *bmw
+    preferred_card_price: ""
+    preferred_card_info: "Preis in der BMW-App prüfen!"
+    fallback_card: *adhoc
+    fallback_card_price: ""
+    fallback_card_info: "Kreditkarte oder QR-Code"
+  
+  # - id: muster
+  #   name: "Musterbetreiber"
+  #   logo: "./images/plug.svg"
+  #   preferred_card: 
+  #   preferred_card_price: "0,39 €/kWh"
+  #   preferred_card_info: "Einzeiliger Infotext"
+  #   fallback_card: 
+  #   fallback_card_price: ""
+  #   fallback_card_info: |
+  #     Mehrzeiliger
+  #     Infotext
+  #     (Ohne Anführungszeichen!)
+  #   operator_info: ""

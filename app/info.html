@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Info</title>
+
+  <link id="favicon" rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+  <script src="js-yaml.min.js"></script>
+  <meta name="theme-color" content="#f8e5d2">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img id="pageLogo" class="brand-logo hidden" alt="Logo" />
+        <div class="brand-text">
+          <p id="introText" class="subtitle"></p>
+          <h1 id="pageTitle"></h1>
+        </div>
+      </div>
+
+      <!-- Zurück zur App -->
+      <a href="index.html" class="info-link" aria-label="Zurück">
+        ↩️
+      </a>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="info-page">
+      <h2 class="info-fixed-title">Info</h2>
+
+      <!-- Hier kommen Absätze rein -->
+      <div id="infoText" class="info-text"></div>
+    </section>
+
+    <section id="errorState" class="error-state hidden">
+      <div class="error-card">
+        <div class="error-title">Daten nicht verfügbar</div>
+        <div id="errorText" class="error-text"></div>
+      </div>
+    </section>
+  </main>
+
+<!-- Footer nur für Info-Seite -->
+<footer id="infoFooter" class="info-footer hidden">
+  <div class="info-footer-inner">
+
+    <!-- Zeile 1: optionale Links -->
+    <div class="info-footer-row">
+      <a id="privacyLink"
+         class="text-link hidden"
+         href="#"
+         rel="noopener"
+         target="_blank">Datenschutz</a>
+
+      <span id="linksSep" class="info-sep hidden">•</span>
+
+      <a id="imprintLink"
+         class="text-link hidden"
+         href="#"
+         rel="noopener"
+         target="_blank">Impressum</a>
+    </div>
+
+    <!-- Zeile 2: fixer Link -->
+    <div class="info-footer-row">
+      <a class="text-link"
+         href="https://ladegams.eu"
+         target="_blank"
+         rel="noopener">
+        ladegams.eu
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+  <script src="info.js"></script>
+</body>
+</html>

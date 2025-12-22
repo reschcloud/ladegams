@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>LADEGAMS.eu</title>
+
+  <link id="favicon" rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+  <script src="js-yaml.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img id="pageLogo" class="brand-logo hidden" alt="Logo" />
+        <div class="brand-text">
+          <p id="introText" class="subtitle"></p>
+          <h1 id="pageTitle">LADEGAMS.eu</h1>
+        </div>
+      </div>
+      <a href="info.html" class="info-link" aria-label="Informationen">
+        ?
+      </a>
+    </div>
+  </header>
+
+  <main class="app">
+    <div id="operatorHeader" class="operator-header hidden">
+      <img id="operatorLogo" class="operator-logo hidden" alt="" />
+      <div id="operatorTitle" class="operator-title"></div>
+      <div id="operatorInfo" class="operator-info hidden"></div>
+    </div>
+
+    <section id="errorState" class="error-state hidden">
+      <div class="error-card">
+        <div class="error-title">Daten nicht verfügbar</div>
+        <div id="errorText" class="error-text"></div>
+      </div>
+    </section>
+
+    <section id="cardsSection" class="cards">
+
+      <!-- Preferred -->
+      <article class="card-shell card-shell--primary">
+        <div class="shell-head">
+          <div class="shell-title">LADEKARTE</div>
+          <div class="chip chip--ok" id="recommendedPill">
+            Empfohlen
+          </div>
+        </div>
+        <div id="preferredCard" class="card-inner">
+          <div class="muted">Bitte unten eine Ladestation auswählen.</div>
+        </div>
+      </article>
+
+
+      <!-- Fallback -->
+      <article class="card-shell card-shell--secondary">
+        <div class="shell-head">
+          <div class="shell-title">LADEKARTE ALTERNATIV</div>
+          <!--<div class="chip chip--neutral">Alternative</div>-->
+        </div>
+        <div id="fallbackCard" class="card-inner">
+          <div class="muted">—</div>
+        </div>
+      </article>
+      
+    </section>
+  </main>
+
+  <!-- Bottom picker (fixed) -->
+  <footer class="station-bar">
+    <div class="station-bar-inner">
+      <div class="station-row">
+        <div class="station-label">LADESTATION</div>
+        <select id="operatorSelect" class="station-select">
+        </select>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
