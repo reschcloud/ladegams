@@ -1,35 +1,3 @@
-// Script, um die Info aus der data.yaml in die Info-Page zu schreiben
-
-function setFaviconFromLogo(logoPath) {
-  if (!logoPath) return;
-  const favicon = document.getElementById("favicon");
-  if (!favicon) return;
-
-  const url = new URL(logoPath, location.href);
-  const isSvg = url.pathname.toLowerCase().endsWith(".svg");
-
-  if (isSvg) {
-    favicon.href = logoPath;
-    favicon.type = "image/svg+xml";
-    return;
-  }
-
-  const img = new Image();
-  img.crossOrigin = "anonymous";
-  img.onload = () => {
-    const size = 64;
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, size, size);
-    ctx.drawImage(img, 0, 0, size, size);
-    favicon.href = canvas.toDataURL("image/png");
-    favicon.type = "image/png";
-  };
-  img.src = logoPath;
-}
-
 function renderParagraphs(containerEl, text) {
   containerEl.innerHTML = "";
 
@@ -49,7 +17,6 @@ function renderParagraphs(containerEl, text) {
 async function loadInfoFromYaml() {
   const elPageTitle = document.getElementById("pageTitle");
   const elIntroText = document.getElementById("introText");
-  const elPageLogo  = document.getElementById("pageLogo");
 
   const elInfoText  = document.getElementById("infoText");
 
@@ -62,7 +29,7 @@ async function loadInfoFromYaml() {
   const elErrorText  = document.getElementById("errorText");
 
   try {
-    const res = await fetch("./data.yaml", { cache: "no-store" });
+    const res = await fetch("./custom_data.yaml", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const yamlText = await res.text();
@@ -70,20 +37,10 @@ async function loadInfoFromYaml() {
     const meta = data?.meta || {};
 
     // Header aus YAML
-    const title = meta.page_title || "Ladekarten-Kompass";
-    document.title = `${title} – Info`;
+    const title = meta.page_title || "LADEGAMS.eu";
+    document.title = `${title} - Info`;
     elPageTitle.textContent = title;
     elIntroText.textContent = meta.intro_text || "";
-
-    if (meta.page_logo && elPageLogo) {
-      elPageLogo.src = meta.page_logo;
-      elPageLogo.alt = title;
-      elPageLogo.classList.remove("hidden");
-      elPageLogo.onerror = () => elPageLogo.classList.add("hidden");
-      setFaviconFromLogo(meta.page_logo);
-    } else if (elPageLogo) {
-      elPageLogo.classList.add("hidden");
-    }
 
     // Info-Text: jede Zeile => eigener Absatz
     renderParagraphs(elInfoText, meta.info_page_text || "");
@@ -111,12 +68,12 @@ async function loadInfoFromYaml() {
     }
 
     // Separator zwischen Datenschutz und Impressum
-    const sep1 = document.getElementById("linksSep");
+    const sep1 = document.getElementById("linksSep1");
     if (ds && im) sep1.classList.remove("hidden");
     else sep1.classList.add("hidden");
 
     // Footer zeigen, sobald *irgendein* Inhalt da ist
-    // (ladegams.eu ist immer sichtbar)
+    // (ladegams.eu zählt immer mit)
     elFooter.classList.remove("hidden");
 
 
@@ -127,7 +84,7 @@ async function loadInfoFromYaml() {
   } catch (e) {
     console.warn(e);
     elErrorText.textContent =
-      "Die Datei „data.yaml“ konnte nicht geladen werden. Bitte prüfen, ob sie im gleichen Verzeichnis liegt und vom Webserver ausgeliefert wird.";
+      "Die Datei „custom_data.yaml“ konnte nicht geladen werden. Bitte prüfen, ob sie im gleichen Verzeichnis liegt und vom Webserver ausgeliefert wird.";
     elErrorState.classList.remove("hidden");
     if (elFooter) elFooter.classList.add("hidden");
   }

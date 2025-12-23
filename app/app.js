@@ -1,5 +1,3 @@
-// Script, um die Info aus der data.yaml in die App zu schreiben
-
 let DATA = null;
 
 const elPageTitle = document.getElementById("pageTitle");
@@ -12,7 +10,6 @@ const elOperatorInfo = document.getElementById("operatorInfo");
 const elRecommendedPill = document.getElementById("recommendedPill");
 const elOperatorHeader = document.getElementById("operatorHeader");
 const elOperatorLogo = document.getElementById("operatorLogo");
-const elPageLogo = document.getElementById("pageLogo");
 const elErrorState = document.getElementById("errorState");
 const elErrorText  = document.getElementById("errorText");
 const elCardsSection = document.getElementById("cardsSection");
@@ -86,7 +83,7 @@ function setOperatorHeader(operator) {
     elOperatorInfo.classList.remove("hidden");
   }
 
-  // FALL 1: Logo existiert => versuchen zu laden
+  // FALL 1: Logo existiert → versuchen zu laden
   if (operator.logo && String(operator.logo).trim() !== "") {
     elOperatorLogo.src = operator.logo;
     elOperatorLogo.alt = `${name} Logo`;
@@ -105,7 +102,7 @@ function setOperatorHeader(operator) {
     return;
   }
 
-  // FALL 2: Kein Logo => Text anzeigen
+  // FALL 2: Kein Logo → Text anzeigen
   elOperatorTitle.textContent = name;
   elOperatorTitle.classList.remove("hidden");
 }
@@ -145,42 +142,6 @@ function onSelectChange() {
 
 }
 
-// Macht aus dem page_logo ein Favicon
-function setFaviconFromLogo(logoPath) {
-  if (!logoPath) return;
-
-  const favicon = document.getElementById("favicon");
-  if (!favicon) return;
-
-  // SVG kann direkt als favicon genutzt werden
-  if (logoPath.endsWith(".svg")) {
-    favicon.href = logoPath;
-    favicon.type = "image/svg+xml";
-    return;
-  }
-
-  // Für PNG/JPG: Bild auf Canvas zeichnen (sauber skaliert)
-  const img = new Image();
-  img.crossOrigin = "anonymous";
-  img.onload = () => {
-    const size = 64;
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext("2d");
-
-    ctx.clearRect(0, 0, size, size);
-    ctx.drawImage(img, 0, 0, size, size);
-
-    favicon.href = canvas.toDataURL("image/png");
-    favicon.type = "image/png";
-  };
-  img.onerror = () => {
-    console.warn("Favicon konnte nicht aus page_logo erzeugt werden:", logoPath);
-  };
-
-  img.src = logoPath;
-}
 
 async function loadYaml() {
   try {
@@ -188,7 +149,7 @@ async function loadYaml() {
     elErrorState.classList.add("hidden");
     elCardsSection.classList.remove("hidden");
 
-    const res = await fetch("./data.yaml", { cache: "no-store" });
+    const res = await fetch("./custom_data.yaml", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const yamlText = await res.text();
@@ -200,23 +161,12 @@ async function loadYaml() {
       document.title = meta.page_title;
       elPageTitle.textContent = meta.page_title;
     }
-    if (meta.page_logo && elPageLogo) {
-      elPageLogo.onerror = () => elPageLogo.classList.add("hidden");
-      elPageLogo.src = meta.page_logo;
-      elPageLogo.alt = meta.page_title || "Logo";
-      elPageLogo.classList.remove("hidden");
-    }
-    if (meta.page_logo) {
-      setFaviconFromLogo(meta.page_logo);
-    }
-    else if (elPageLogo) {
-      elPageLogo.classList.add("hidden");
-    }
+
     if (meta.intro_text) elIntroText.textContent = meta.intro_text;
 
     // Betreiber in YAML zählen
     const ops = DATA?.operators || [];
-    if (!ops.length) throw new Error("Keine Betreiber in data.yaml gefunden");
+    if (!ops.length) throw new Error("Keine Betreiber in custom_data.yaml gefunden");
 
     // Auswahl von Betreibern befüllen
     elSelect.innerHTML = "";
@@ -237,7 +187,7 @@ async function loadYaml() {
     // YAML nicht ladbar: Error-Karte zeigen, Rest verstecken
     elCardsSection.classList.add("hidden");
     elErrorText.textContent =
-      "Die Datei „data.yaml“ konnte nicht vom Webserver geladen werden. " +
+      "Die Datei „custom_data.yaml“ konnte nicht vom Webserver geladen werden. " +
       "Bitte prüfen, ob sie im gleichen Verzeichnis liegt und per Webserver ausgeliefert wird.";
     elErrorState.classList.remove("hidden");
 

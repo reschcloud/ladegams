@@ -1,21 +1,54 @@
 <!doctype html>
 <html lang="de">
 <head>
+  <base href="https://ladegams.eu/demo/"> <!-- AUF EIGENE BASE URL ANPASSEN -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Info</title>
+  <meta name="description"
+        content="LADEGAMS.eu - Welche Ladekarte an welcher Ladestation?" />
+  <title>LADEGAMS.eu</title>
 
-  <link id="favicon" rel="icon" href="data:," />
+  <!-- ===== Favicon ===== -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
+
+  <!-- ===== iOS / Apple ===== -->
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="LADEGAMS.eu">
+
+  <!-- ===== PWA Manifest ===== -->
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- ===== Open Graph (WhatsApp, Signal, iMessage, LinkedIn, …) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LADEGAMS.eu">
+  <meta property="og:description"
+        content="LADEGAMS.eu - Welche Ladekarte an welcher Ladestation?">
+  <meta property="og:url" content="./">
+  <meta property="og:image" content="images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- ===== Twitter ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LADEGAMS.eu">
+  <meta name="twitter:description"
+        content="LADEGAMS.eu - Welche Ladekarte an welcher Ladestation?">
+  <meta name="twitter:image" content="images/og-image.png">
+
+  <!-- ===== Styles & JS ===== -->
   <link rel="stylesheet" href="style.css" />
   <script src="js-yaml.min.js"></script>
-  <meta name="theme-color" content="#f8e5d2">
 </head>
 
 <body>
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <img id="pageLogo" class="brand-logo hidden" alt="Logo" />
+        <img class="brand-logo" src="images/logo.svg" alt="LADEGAMS Logo">
         <div class="brand-text">
           <p id="introText" class="subtitle"></p>
           <h1 id="pageTitle"></h1>
@@ -57,7 +90,7 @@
          rel="noopener"
          target="_blank">Datenschutz</a>
 
-      <span id="linksSep" class="info-sep hidden">•</span>
+      <span id="linksSep1" class="info-sep hidden">•</span>
 
       <a id="imprintLink"
          class="text-link hidden"
@@ -72,7 +105,7 @@
          href="https://ladegams.eu"
          target="_blank"
          rel="noopener">
-        ladegams.eu
+        🔗 LADEGAMS.eu
       </a>
     </div>
 
