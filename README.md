@@ -21,7 +21,8 @@
 
 1. Kopiere den Inhalt des Ordners ``app`` auf deinen Webserver
 2. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://ladegams.eu/demo/">` auf deinen tatsächliche URL
-3. Beginne mit der Konfiguration
+3. *Falls die Website nicht im Root der Domain liegt:* ändere in der Datei `manifest.webmanifest` die Zeile `"start_url": "/"` zu `"start_url": "/mein/unterverzeichnis/"`
+4. Beginne mit der Konfiguration
 
 ### Konfiguration
 
@@ -41,6 +42,7 @@ Die **Logos** für *Website*, *Ladekarten* und *Ladestations-Betreiber* sollten 
 1. Mache ein Backup deiner `custom_data.yaml` und des Ordners `custom_images` 
 2. Ersetze alle anderen Dateien bzw. Ordner gegen die neuere Version
 3. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://ladegams.eu/demo/">` auf deinen tatsächliche URL
+4. *Falls die Website nicht im Root der Domain liegt:* ändere in der Datei `manifest.webmanifest` die Zeile `"start_url": "/"` zu `"start_url": "/mein/unterverzeichnis/"`
 
 > [!IMPORTANT]
 >
