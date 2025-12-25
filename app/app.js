@@ -27,7 +27,7 @@ function escapeHtml(s) {
 }
 
 function renderCard(card, priceText = "", infoText = "") {
-  if (!card) return `<div class="muted">—</div>`;
+  if (!card) return `<div class="muted">-</div>`;
 
   const name = escapeHtml(card.name);
   const logo = escapeHtml(card.logo || "");
@@ -83,7 +83,7 @@ function setOperatorHeader(operator) {
     elOperatorInfo.classList.remove("hidden");
   }
 
-  // FALL 1: Logo existiert → versuchen zu laden
+  // FALL 1: Logo existiert -> versuchen zu laden
   if (operator.logo && String(operator.logo).trim() !== "") {
     elOperatorLogo.src = operator.logo;
     elOperatorLogo.alt = `${name} Logo`;
@@ -102,7 +102,7 @@ function setOperatorHeader(operator) {
     return;
   }
 
-  // FALL 2: Kein Logo → Text anzeigen
+  // FALL 2: Kein Logo -> Text anzeigen
   elOperatorTitle.textContent = name;
   elOperatorTitle.classList.remove("hidden");
 }
@@ -125,21 +125,31 @@ function onSelectChange() {
   const op = (DATA?.operators || []).find(o => o.id === id);
   if (!op) return;
 
-  setOperatorHeader(op);
-  setRecommendedPill(op.name);
+  elOperatorHeader.classList.add("is-switching");
+  elCardsSection.classList.add("is-switching");
 
-  elPreferred.innerHTML = renderCard(
-    op.preferred_card,
-    op.preferred_card_price,
-    op.preferred_card_info
-  );
+  window.setTimeout(() => {
 
-  elFallback.innerHTML = renderCard(
-    op.fallback_card,
-    op.fallback_card_price,
-    op.fallback_card_info
-  );
+    setOperatorHeader(op);
+    setRecommendedPill(op.name);
 
+    elPreferred.innerHTML = renderCard(
+      op.preferred_card,
+      op.preferred_card_price,
+      op.preferred_card_info
+    );
+
+    elFallback.innerHTML = renderCard(
+      op.fallback_card,
+      op.fallback_card_price,
+      op.fallback_card_info
+    );
+
+    requestAnimationFrame(() => { 
+      elOperatorHeader.classList.remove("is-switching");
+      elCardsSection.classList.remove("is-switching");
+    });
+  }, 140);
 }
 
 
@@ -187,7 +197,7 @@ async function loadYaml() {
     // YAML nicht ladbar: Error-Karte zeigen, Rest verstecken
     elCardsSection.classList.add("hidden");
     elErrorText.textContent =
-      "Die Datei „custom_data.yaml“ konnte nicht vom Webserver geladen werden. " +
+      "Die Datei 'custom_data.yaml' konnte nicht vom Webserver geladen werden. " +
       "Bitte prüfen, ob sie im gleichen Verzeichnis liegt und per Webserver ausgeliefert wird.";
     elErrorState.classList.remove("hidden");
 
