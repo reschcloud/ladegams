@@ -327,7 +327,7 @@ h1{
 .station-label {
     font-size: var(--f-small);
     font-weight: 700;
-    padding-left: 5px;
+    padding-left: 14px;
 }
 
 .station-select{
