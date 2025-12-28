@@ -515,7 +515,7 @@ select option{
     --accent:#6ea8fe;
     --ok:#97e860;
 
-    --shadow: 0 16px 30px rgba(0,0,0,.45);
+    --shadow: 3px 3px 10px rgba(0,0,0,.45);
   }
 
   html{ color-scheme: dark; }
