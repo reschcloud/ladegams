@@ -1,7 +1,7 @@
 {
   "name": "LADEGAMS.eu",
   "short_name": "LADEGAMS.eu",
-  "start_url": "/demo/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffff3e6",
   "icons": [
