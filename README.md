@@ -7,7 +7,7 @@
 
 💡 **Beispiel 1:** Du bist in einem Unternehmen für den Fuhrpark verantwortlich und möchtest deinen Dienstwagennutzer:innen mitteilen, welche der vom Unternehmen zur Verfügung gestellten Ladekarten sie an welcher Ladestation bevorzugt nutzen sollen um die Kosten für öffentliches Laden zu optimieren. Die LADEGAMS ermöglicht dir genau das.
 
-💡 **Beispiel 2:**Du bist der Familien-Nerd und hast deinen Eltern ein Elektroauto eingeredet. Du besorgst ihnen zwei Ladekarten und richtest die LADEGAMS für sie ein, damit sie an den für sie wichtigsten Ladestationen schnell sehen, welche Karte sie verwenden sollen. 
+💡 **Beispiel 2:** Du bist der Familien-Nerd und hast deinen Eltern ein Elektroauto eingeredet (👍). Du besorgst ihnen zwei Ladekarten und richtest die LADEGAMS für sie ein, damit sie an den für sie wichtigsten Ladestationen schnell sehen, welche Karte sie verwenden sollen. 
 
 ⚙️ Um die LADEGAMS zu nutzen, brauchst du nur einen Webserver. Die Datenpflege erfolgt vollständig in einer strukturierten Textdatei (`custom_data.yaml`), die mit jedem Texteditor bearbeitet werden kann.
 
@@ -22,7 +22,7 @@
 ### Installation
 
 1. Kopiere den Inhalt des Ordners ``app`` auf deinen Webserver
-2. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://example.org/">` auf deinen tatsächliche URL
+2. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://ladegams.example/">` auf deinen tatsächliche URL
 3. *Falls die Website nicht im Root der Domain liegt:* ändere in der Datei `manifest.webmanifest` die Zeile `"start_url": "/"` zu `"start_url": "/mein/unterverzeichnis/"`
 4. Beginne mit der Konfiguration
 
@@ -43,7 +43,7 @@ Die **Logos** für *Website*, *Ladekarten* und *Ladestations-Betreiber* sollten 
 
 1. Mache ein Backup deiner `custom_data.yaml` und des Ordners `custom_images` 
 2. Ersetze alle anderen Dateien bzw. Ordner gegen die neuere Version
-3. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://example.org/">` auf deinen tatsächliche URL
+3. Ändere in der `index.html` und in der `info.html` die Zeile `<base href="https://ladegams.example/">` auf deinen tatsächliche URL
 4. *Falls die Website nicht im Root der Domain liegt:* ändere in der Datei `manifest.webmanifest` die Zeile `"start_url": "/"` zu `"start_url": "/mein/unterverzeichnis/"`
 
 > [!IMPORTANT]
