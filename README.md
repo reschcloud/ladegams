@@ -2,7 +2,7 @@
 
 **⚠️ Die LADEGAMS ist kein weiteres Vergleichstool für Ladepreise!**
 
-**Die Ladegams erlaubt es dir, individuelle Empfehlungen bereitzustellen, welche Ladekarte man an welcher Ladestation benutzen sollte.**
+**Die LADEGAMS erlaubt es dir, individuelle Empfehlungen bereitzustellen, welche Ladekarte man an welcher Ladestation benutzen sollte.**
 
 
 💡 **Beispiel 1:** Du bist in einem Unternehmen für den Fuhrpark verantwortlich und möchtest deinen Dienstwagennutzer:innen mitteilen, welche der vom Unternehmen zur Verfügung gestellten Ladekarten sie an welcher Ladestation bevorzugt nutzen sollen um die Kosten für öffentliches Laden zu optimieren. Die LADEGAMS ermöglicht dir genau das.
@@ -38,6 +38,13 @@ Passe den Inhalt nach deinen Bedürfnissen an:
 Achte bei Anpassungen unbedingt auf die korrekte **Einrückung** (immer 2 Leerzeichen pro Ebene) und darauf, Anführungszeichen korrekt zu setzen. Versuche, dich bei den Infotexten kurz zu halten. Weniger Information ist oft wirkungsvoller.
 
 Die **Logos** für *Website*, *Ladekarten* und *Ladestations-Betreiber* sollten SVG- oder PNG-Dateien mit transparentem Hintergrund sein. Die Dateinamen müssen exakt dem Namen in der `custom_data.yaml` entsprechen.
+
+### Installation als Web-App in iOS
+
+Damit du die LADEGAMS wie eine "echte" App am iPhone nutzen kannst, füge sie zum Home-Bildschirm hinzu:
+
+1. Öffne deine LADEGAMS-Website in Safari
+2. `Teilen` --> `Zum Home-Bildschirm` --> `Hinzufügen`
 
 ### Update
 
