@@ -21,6 +21,21 @@
   --f-large:19px;
 }
 
+@font-face {
+  font-family: "SUSE";
+  src: url("./fonts/suse/SUSE[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SUSE";
+  src: url("./fonts/suse/SUSE-Italic[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 *{box-sizing:border-box}
 html, body {
   margin: 0;
@@ -39,7 +54,7 @@ body{
   padding:0;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
-  font-family: "Arial", sans-serif;
+  font-family: "SUSE", "Helvetica", "Arial", sans-serif;
   color:var(--text);
   background-color:var(--bg0);
 }
