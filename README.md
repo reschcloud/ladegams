@@ -13,9 +13,9 @@
 
 
 
-**Projekt-Website:** [LADEGAMS.eu](https://ladegams.eu)
+**Projekt-Website:** [LADEGAMS.app](https://ladegams.app)
 
-**Demo:** [LADEGAMS.eu/demo](https://ladegams.eu/demo)
+**Demo:** [LADEGAMS.app/demo](https://ladegams.app/demo)
 
 ---
 
