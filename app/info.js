@@ -37,7 +37,7 @@ async function loadInfoFromYaml() {
     const meta = data?.meta || {};
 
     // Header aus YAML
-    const title = meta.page_title || "LADEGAMS.eu";
+    const title = meta.page_title || "LADEGAMS.app";
     document.title = `${title} - Info`;
     elPageTitle.textContent = title;
     elIntroText.textContent = meta.intro_text || "";
@@ -73,7 +73,7 @@ async function loadInfoFromYaml() {
     else sep1.classList.add("hidden");
 
     // Footer zeigen, sobald *irgendein* Inhalt da ist
-    // (ladegams.eu zählt immer mit)
+    // (ladegams.app zählt immer mit)
     elFooter.classList.remove("hidden");
 
 

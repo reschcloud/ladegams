@@ -1,6 +1,6 @@
 {
-  "name": "LADEGAMS.eu",
-  "short_name": "LADEGAMS.eu",
+  "name": "LADEGAMS.app",
+  "short_name": "LADEGAMS.app",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffff3e6",
